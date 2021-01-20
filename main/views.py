@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse
-from .models import ToDo
+from .models import ToDo, Bookhouse
 
 # Create your views here.
 
@@ -16,3 +16,7 @@ def second(request):
 
 def homework31(request):
     return render(request, "homework31.html")
+
+def books(request):
+    book_list = Bookhouse.objects.all()
+    return render(request, "books.html", {"book_list": book_list})
