@@ -13,3 +13,6 @@ def test(request):
 
 def second(request):
     return HttpResponse("test 2 page")
+
+def homework31(request):
+    return render(request, "homework31.html")
