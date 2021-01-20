@@ -6,6 +6,21 @@
     <title>Bookhouse</title>
 </head>
 <body>
+
+    <div>
+        <form action="{% url 'add-book' %}" method="POST">
+            {% csrf_token %}
+            <input type="text" placeholder="title (заголовок)" name="book_title">
+            <input type="text" placeholder="subtitle (подзаголовок)" name="book_subtitle">
+            <input type="text" placeholder="description (описание)" name="book_description">
+            <input type="text" placeholder="price (цена)" name="book_price">
+            <input type="text" placeholder="genre (жанр)" name="book_genre">
+            <input type="text" placeholder="author (автор)" name="book_author">
+            <input type="text" placeholder="year (год выхода книги)" name="book_year">
+            <button>Добавить книгу</button>
+        </form>
+    </div>
+
     {% for books in book_list %}
     
         <h1>{{ books.title }}<h1>
