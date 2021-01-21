@@ -57,3 +57,24 @@ def unmark_todo(request, id):
     todo.is_favorite = False
     todo.save()
     return redirect(test)
+
+def delete_books(request, id):
+    book = Bookhouse.objects.get(id=id)
+    book.delete()
+    return redirect(books)
+
+def mark_books(request, id):
+    book = Bookhouse.objects.get(id=id)
+    book.is_favorite = True
+    book.save()
+    return redirect(books)
+
+def unmark_books(request, id):
+    book = Bookhouse.objects.get(id=id)
+    book.is_favorite = False
+    book.save()
+    return redirect(books)
+
+# def BooksDetail(request, id):
+#     return redirect(books_detail)
+
