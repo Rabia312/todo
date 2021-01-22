@@ -75,8 +75,14 @@ def unmark_books(request, id):
     book.save()
     return redirect(books)
 
-# def BooksDetail(request, id):
-#     return redirect(books_detail)
+def books_detail(request):
+    mybook = Bookhouse.objects.all()
+    return render(request, "books_detail.html", {"mybook": mybook})
+
+def BooksDetail(request, id):
+    book1 = Bookhouse.objects.get(id=id)
+    book1.save()
+    return redirect(books_detail)
 
 def close_todo(request, id):
     todo = ToDo.objects.get(id=id)

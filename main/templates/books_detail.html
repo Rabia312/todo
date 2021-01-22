@@ -6,60 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'styles/index.css' %}">
     <link rel="stylesheet" href="{% static 'styles/checkbox.css' %}">
-    <title>Bookhouse</title>
+    <title>Bookhouse-book</title>
 </head>
 <body>
-    <section>
-        <div class="create_container">
-            <form action="{% url 'add-book' %}" method="POST">
-                {% csrf_token %}
-                <input class="create_input" type="text" placeholder="title (заголовок)" name="book_title">
-                <input class="create_input" type="text" placeholder="subtitle (подзаголовок)" name="book_subtitle">
-                <input class="create_input" type="text" placeholder="description (описание)" name="book_description">
-                <input class="create_input" type="text" placeholder="price (цена)" name="book_price">
-                <input class="create_input" type="text" placeholder="genre (жанр)" name="book_genre">
-                <input class="create_input" type="text" placeholder="author (автор)" name="book_author">
-                <input class="create_input" type="text" placeholder="year (год выхода книги)" name="book_year">
-                <button id="create_button">Добавить книгу</button>
-            </form>
-        </div> 
-
-        <div class="todo_container">
-
-            {% for books in book_list %}
-            <div class="todo_item
-                {% if books.is_favorite %}
-                    marked
-                {% endif %}
-            ">
-                <div class="todo_item_header">
-                    <label class="checkbox_container">
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>   
-                    <div>
-                        <h1>{{ books.title }}<h1>
-                        <h3>{{ books.author }}<h3>
-                    </div>                      
-                </div>
-
-                <div class="todo_item_footer">
-                    <span>{{ books.description }}</span>
-
-                    <div class="action_buttons">
-                        {% if books.is_favorite %}
-                        <a href="{% url 'unmark-books' books.id %}"><img src="{% static './icons/marked.png' %}"></a>
-                        {% else %}
-                            <a href="{% url 'mark-books' books.id %}"><img src="{% static './icons/unmarked.png' %}"></a>
-                        {% endif %}
-                            <a href="{% url 'delete-books' books.id %}"><img src="{% static './icons/delete.png' %}"></a>
-                    </div>
-                </div>
-            </div>
-
-            {% endfor %}
-        </div>
-
-    </section>
+    {% for books in mybook %}
+        <div>
+            <h1>{{ books.title }}<h1>
+            <h3>{{ books.author }}<h3>
+            <p>{{books.subtitle}}</p>
+            <p>{{books.price}}</p>
+            <p>{{books.genre}}</p>
+            <p>{{books.year}}</p>
+            <p>{{books.description}}</p>
+            <p>{{books.date}}</p>
+        </div>              
+        <br>
+        <br>
+    {% endfor %}        
 </body>
 </html>
