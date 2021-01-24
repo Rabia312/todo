@@ -9,16 +9,30 @@
     <title>Bookhouse-book</title>
 </head>
 <body>
-    {% for books in mybook %}
+    <style>
+        body{margin: 50px;}
+        div{width: 50%; margin: 0 auto;}
+        #title{text-align: center; color: brown; text-transform: uppercase;}
+        .genre{font-style: italic;}
+    </style>
+    {% for mybook in books_detail %}
         <div>
-            <h1>{{ books.title }}<h1>
-            <h3>{{ books.author }}<h3>
-            <p>{{books.subtitle}}</p>
-            <p>{{books.price}}</p>
-            <p>{{books.genre}}</p>
-            <p>{{books.year}}</p>
-            <p>{{books.description}}</p>
-            <p>{{books.date}}</p>
+            <h3 id="title">{{ mybook.title }}<h3>
+                <br>
+                <br>
+            <p>{{mybook.subtitle}}</p>
+            <br>
+            <br>
+            <p>Цена: {{mybook.price}}сом</p>
+            <br>
+            <br>
+            <p>Жанр: <span class="genre"> {{mybook.genre}}</span></p>
+            <br>
+            <br>
+            <p>Год издания: {{mybook.year}}</p>
+            <br>
+            <br>
+            <p>{{mybook.description}}</p>
         </div>              
         <br>
         <br>

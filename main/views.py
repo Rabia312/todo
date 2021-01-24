@@ -36,7 +36,7 @@ def add_book(request):
     price = form["book_price"]
     genre = form["book_genre"]
     author = form["book_author"]
-    year = form["book_year"]
+    year = form["book_year"][:10]
     book = Bookhouse(title=title, subtitle=subtitle, description=description, price=price, genre=genre, author=author, year=year)
     book.save()
     return redirect(books)
@@ -75,14 +75,9 @@ def unmark_books(request, id):
     book.save()
     return redirect(books)
 
-def books_detail(request):
-    mybook = Bookhouse.objects.all()
-    return render(request, "books_detail.html", {"mybook": mybook})
-
-def BooksDetail(request, id):
-    book1 = Bookhouse.objects.get(id=id)
-    book1.save()
-    return redirect(books_detail)
+def books_detail(request, id):
+    mybook = Bookhouse.objects.filter(id=id)
+    return render(request, "books_detail.html", {"books_detail": mybook})
 
 def close_todo(request, id):
     todo = ToDo.objects.get(id=id)
