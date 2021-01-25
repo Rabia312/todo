@@ -13,29 +13,24 @@
         body{margin: 50px;}
         div{width: 50%; margin: 0 auto;}
         #title{text-align: center; color: brown; text-transform: uppercase;}
-        .genre{font-style: italic;}
+        .genre, a{font-style: italic;}
     </style>
     {% for mybook in books_detail %}
         <div>
             <h3 id="title">{{ mybook.title }}<h3>
-                <br>
-                <br>
+                <br><br>
             <p>{{mybook.subtitle}}</p>
-            <br>
-            <br>
+            <br><br>
             <p>Цена: {{mybook.price}}сом</p>
-            <br>
-            <br>
+            <br><br>
             <p>Жанр: <span class="genre"> {{mybook.genre}}</span></p>
-            <br>
-            <br>
+            <br><br>
             <p>Год издания: {{mybook.year}}</p>
-            <br>
-            <br>
+            <br><br>
             <p>{{mybook.description}}</p>
+            <br><br>
+            <a href="javascript:history.back()">Назад на главную страницу</a>
         </div>              
-        <br>
-        <br>
     {% endfor %}        
 </body>
 </html>
